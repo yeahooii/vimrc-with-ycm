@@ -112,6 +112,10 @@ autocmd BufReadPost * if line("'\"") > 1
 let g:tlTokenList = ["FIXME", "TODO", "HACK", "NOTE", "WARN", "MODIFY"]
 "}}}
 
+"{{{ vim-bookmarks
+let g:bookmark_highlight_lines  = 1 " 高亮显示书签行
+"}}}
+
 "===============================================================================
 " Key Binding
 "===============================================================================
