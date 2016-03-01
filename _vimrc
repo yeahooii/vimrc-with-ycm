@@ -46,8 +46,8 @@ set smartindent                     " 开启新行时，智能缩进
 set cindent                         " C程序自动缩进
 
 " 换行
-set nowrap                          " 不自动换行
-set lbr                             " 不在单词中间断行
+set wrap							" (当一行长度超过屏幕宽度后)自动换行显示
+set linebreak                       " 不在单词中间断行
 set fo+=mB                          " 打开断行模块对亚洲语言支持
 set whichwrap+=<,>,h,l              " 命令模式下可以直接移动到下一行或上一行
 
