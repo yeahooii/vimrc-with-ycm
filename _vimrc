@@ -131,9 +131,10 @@ let g:UltiSnipsExpandTrigger="ii"	" 连续按下两次i触发代码补全
 "===============================================================================
 
 " {{{映射快捷键
+let mapleader=";"                               " 定义快捷键的前缀,即<Leader>
 " vim 开发
-nnoremap    ,sv                 :source $MYVIMRC<cr>        " 刷新vim配置
-nnoremap    ,ev                 :vsplit $MYVIMRC<cr>        " 分割窗口打开vim配置
+nnoremap    <leader>sv          :source $MYVIMRC<cr>        " 刷新vim配置
+nnoremap    <leader>ev          :vsplit $MYVIMRC<cr>        " 分割窗口打开vim配置
 
 " 编辑相关
 inoremap    jk                  <esc>           " 编辑模式下按jk等价于按ESC键, 非常高效
@@ -154,7 +155,7 @@ inoremap    <c-j>               <c-o>gj
 inoremap    <c-k>               <c-o>gk
 
 " 绑定快捷键，默认是 <Leader>t
-nnoremap    ,td                 :TaskList<CR>
+nnoremap    <leader>td          :TaskList<CR>
 
 "===============================================================================
 " Source User's Own Setting
