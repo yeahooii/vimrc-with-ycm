@@ -25,7 +25,12 @@ filetype    indent on               " 允许特定的文件类型载入缩进文
 "}}}
 
 "{{{ 编码及存储
-set fileencodings=utf-8             " 文件编码，强制UTF-8
+"显示中文帮助
+if version >= 603
+    set helplang=cn
+endif
+set fileencodings=ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936	" 文件编码自动识别顺序
+"set fileencodings=utf-8             " 文件编码，强制UTF-8
 set encoding=utf-8                  " vim内部编码
 set nobomb                          " 不使用bom编码
 set nobackup                        " 不使用备份文件
