@@ -155,6 +155,21 @@ nnoremap    Q                   :q<CR>          " 命令模式下，输入Q，�
 nmap <leader>w :w!<cr>
 nmap <leader>f :find<cr>
 
+" 复制
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+vmap <C-c> "+y                  " 选中状态下 Ctrl+c 复制
+
+:set pastetoggle=<F11>          " 粘贴情况下的自动对齐开关
+map <F12> gg=G                  " 全文对齐
+
+nnoremap <F2> :g/^\s*$/d<CR>    " 去空行
+
+nnoremap <C-F2> :vert diffsplit " 比较文件
+"map <M-F2> :tabnew<CR>         " 新建标签
+"map <F3> :tabnew .<CR>         " 列出当前目录文件
+"map <C-F3> \be                 " 打开树状文件目录
+"
 " 窗口间移动
 nnoremap    <C-j>               <C-W>j
 nnoremap    <C-k>               <C-W>k
