@@ -29,7 +29,7 @@ filetype    indent on               " 允许特定的文件类型载入缩进文
 if version >= 603
     set helplang=cn
 endif
-set fileencodings=ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936	" 文件编码自动识别顺序
+set fileencodings=ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936 " 文件编码自动识别顺序
 "set fileencodings=utf-8             " 文件编码，强制UTF-8
 set encoding=utf-8                  " vim内部编码
 set nobomb                          " 不使用bom编码
@@ -46,20 +46,26 @@ set smartindent                     " 开启新行时，智能缩进
 set cindent                         " C程序自动缩进
 
 " 换行
-set wrap							" (当一行长度超过屏幕宽度后)自动换行显示
+set wrap                            " (当一行长度超过屏幕宽度后)自动换行显示
 set linebreak                       " 不在单词中间断行
 set fo+=mB                          " 打开断行模块对亚洲语言支持
 set whichwrap+=<,>,h,l              " 命令模式下可以直接移动到下一行或上一行
+set iskeyword+=_,$,@,%,#,-          " 带有如下符号的单词不要被换行分割
+set textwidth=0                     " 关闭代码自动折行，插入模式下，默认每80个字开启新行。
 
 " 空白
 set shiftwidth=4                    " 缩进空白数
 set tabstop=4                       " Tab所占空格数
-set expandtab                       " 将Tab展开为空格
+set noexpandtab                     " 默认不要将Tab展开为空格
+"autocmd FileType make set noexpandtab " Makefile中需要使用Tab
+"autocmd FileType h set noexpandtab  " h file中需要使用Tab
+"autocmd FileType c set noexpandtab  " c file中需要使用Tab
+"autocmd FileType cpp set noexpandtab " cpp file中需要使用Tab
+autocmd FileType java set expandtab " 在java file中需要使用空格
 set softtabstop=4                   " 配合tabstop
 set listchars=tab:▸\ ,trail:▫       " 指定Tab和结尾空白字符
-" Makefile中需要使用Tab
-autocmd FileType make   set      noexpandtab
 set backspace=eol,start,indent      " 插入模式下使用 <BS>、<Del> <C-W> <C-U>
+set smarttab                        " 在行和段开始处使用制表符
 
 " 行号
 set number                          " 显示行号
@@ -139,6 +145,8 @@ nnoremap    <leader>ev          :vsplit $MYVIMRC<cr>        " 分割窗口打开
 " 编辑相关
 inoremap    jk                  <esc>           " 编辑模式下按jk等价于按ESC键, 非常高效
 nnoremap    Q                   :q<CR>          " 命令模式下，输入Q，退出Vim
+nmap <leader>w :w!<cr>
+nmap <leader>f :find<cr>
 
 " 窗口间移动
 nnoremap    <C-j>               <C-W>j
