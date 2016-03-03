@@ -128,3 +128,55 @@ func! Rungdb()
 	exec "!gdb ./%<"
 endfunc
 "}}}
+"{{{
+function! AutoLoadCTagsAndCScope()
+    let b:current_directory = getcwd()
+    let b:position_of_divider = 0
+	unlet! b:tags_find
+	unlet! b:cscope_find
+    while exists("b:current_directory")
+        "search at current directory
+        if isdirectory(b:current_directory)
+            if !exists("b:cscope_find") && filereadable(b:current_directory . '/cscope.out')
+		echo b:current_directory
+				let show = execute 'cs show'
+				echo show
+                execute 'cs add ' . b:current_directory . '/cscope.out'
+				echo  'cs add ' . b:current_directory . '/cscope.out'
+                execute 'lcd ' . b:current_directory
+                let b:cscope_find = 1
+            endif
+            if !exists("b:tags_find") && filereadable(b:current_directory . '/tags')
+                execute 'set tags =' . b:current_directory . '/tags'
+                execute 'lcd ' . b:current_directory
+				echo  'set tags =' . b:current_directory . '/tags'
+                let b:tags_find = 1
+            endif
+            if exists("b:tags_find") && exists("b:cscope_find")
+                break
+            endif
+        endif
+
+        " search at subdirectory
+        " use regular-expression to get the position of the last divider('/')
+        if exists("b:position_of_divider")
+            let b:position_of_divider = match(b:current_directory,'/[^/]\{-}$',0)
+            if(b:position_of_divider > 0)
+                let b:current_directory = strpart(b:current_directory,0,b:position_of_divider)
+            else
+                "try find tags at $HOME at last but not root
+                let b:current_directory = $HOME
+				unlet! b:position_of_divider
+            endif
+        else
+			unlet! b:current_directory
+        endif
+
+    endwhile
+endf
+"nmap <F7> :call AutoLoadCTagsAndCScope()<CR>
+autocmd FileType h call AutoLoadCTagsAndCScope()
+autocmd FileType c call AutoLoadCTagsAndCScope()
+autocmd FileType cpp call AutoLoadCTagsAndCScope()
+autocmd FileType java call AutoLoadCTagsAndCScope()
+"}}}
