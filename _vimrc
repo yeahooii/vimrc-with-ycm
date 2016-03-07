@@ -112,7 +112,7 @@ set novisualbell                    " 禁用可视响铃
 set t_vb=                           " 可视响铃
 set mouse=a                         " 所有模式下，开启鼠标支持
 set clipboard+=unnamed 				"共享剪贴板
-set selection=exclusive
+"set selection=exclusive            " use default value(inclusive)
 set selectmode=mouse,key
 set wildmenu                        " 命令行补全以增强模式运行
 set splitright                      " 竖直新分割的窗口在右侧
