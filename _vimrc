@@ -13,7 +13,7 @@ execute pathogen#infect()
 "}}}
 
 "{{{ 基本设置
-set nocompatible        " 不兼容老得VI，除非有特殊的理由
+set nocompatible                    " 不兼容老得VI，除非有特殊的理由
 "}}}
 
 "{{{语法检测设定
@@ -105,13 +105,13 @@ set t_Co=256                        " 开启256色支持
 "{{{ 杂项
 set shortmess=atI                   " 启动的时候不显示那个援助乌干达儿童的提示
 set history=1000                    " 历史记录数
-set viminfo+=!  " 保存全局变量
+set viminfo+=!                      " 保存全局变量
 set report=0                        " 通过使用: commands命令，告诉我们文件的哪一行被改变过
 set noerrorbells                    " 错误时不发出声响
 set novisualbell                    " 禁用可视响铃
 set t_vb=                           " 可视响铃
 set mouse=a                         " 所有模式下，开启鼠标支持
-set clipboard+=unnamed 				"共享剪贴板
+set clipboard+=unnamed              " 共享剪贴板
 "set selection=exclusive            " use default value(inclusive)
 set selectmode=mouse,key
 set wildmenu                        " 命令行补全以增强模式运行
