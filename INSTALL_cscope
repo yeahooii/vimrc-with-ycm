@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# maybe need to run as root
+
+CURRENT_PATH=$(pwd)
+
+function install_cscope()
+{
+	tar zxvf ${CURRENT_PATH}/tools/zxvf cscope-15.8b.tar.gz
+	cd ${CURRENT_PATH}/tools/cscope-15.8b/
+	./configure
+	make
+	make install
+}
+
+install_cscope
