@@ -128,6 +128,11 @@ func! Rungdb()
 	exec "!gdb ./%<"
 endfunc
 "}}}
+"{{{ generate cscope index
+function! GenCscopeIndex()
+	execute 'find . -name " *.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.java" | xargs cscope -bkq'
+endfunc
+"}}}
 "{{{
 function! AutoLoadCTags() "cscope is loaded by cscope_maps.vim
     " if tag is in current dir, the default value can handle it
