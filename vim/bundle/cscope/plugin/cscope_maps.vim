@@ -43,6 +43,12 @@ if has("cscope")
     " else add the database pointed to by environment variable 
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
+    else
+       let b:cscope_file=findfile("cscope.out", ".;")
+       let b:cscope_pre=matchstr(b:cscope_file, ".*/")
+       if !empty(b:cscope_file) && filereadable(b:cscope_file)
+           exe "cs add" b:cscope_file b:cscope_pre
+       endif
     endif
 
     " show msg when any other cscope db added
