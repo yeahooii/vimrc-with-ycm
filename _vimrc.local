@@ -129,30 +129,20 @@ func! Rungdb()
 endfunc
 "}}}
 "{{{
-function! AutoLoadCTagsAndCScope()
+function! AutoLoadCTags() "cscope is loaded by cscope_maps.vim
     let b:current_directory = getcwd()
     let b:position_of_divider = 0
 	unlet! b:tags_find
-	unlet! b:cscope_find
     while exists("b:current_directory")
         "search at current directory
         if isdirectory(b:current_directory)
-            if !exists("b:cscope_find") && filereadable(b:current_directory . '/cscope.out')
-		echo b:current_directory
-				let show = execute 'cs show'
-				echo show
-                execute 'cs add ' . b:current_directory . '/cscope.out'
-				echo  'cs add ' . b:current_directory . '/cscope.out'
-                execute 'lcd ' . b:current_directory
-                let b:cscope_find = 1
-            endif
             if !exists("b:tags_find") && filereadable(b:current_directory . '/tags')
                 execute 'set tags =' . b:current_directory . '/tags'
                 execute 'lcd ' . b:current_directory
 				echo  'set tags =' . b:current_directory . '/tags'
                 let b:tags_find = 1
             endif
-            if exists("b:tags_find") && exists("b:cscope_find")
+            if exists("b:tags_find")
                 break
             endif
         endif
@@ -174,9 +164,9 @@ function! AutoLoadCTagsAndCScope()
 
     endwhile
 endf
-"nmap <F7> :call AutoLoadCTagsAndCScope()<CR>
-autocmd FileType h call AutoLoadCTagsAndCScope()
-autocmd FileType c call AutoLoadCTagsAndCScope()
-autocmd FileType cpp call AutoLoadCTagsAndCScope()
-autocmd FileType java call AutoLoadCTagsAndCScope()
+"nmap <F7> :call AutoLoadCTags()<CR>
+autocmd FileType h call AutoLoadCTags()
+autocmd FileType c call AutoLoadCTags()
+autocmd FileType cpp call AutoLoadCTags()
+autocmd FileType java call AutoLoadCTags()
 "}}}
