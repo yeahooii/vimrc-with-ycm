@@ -130,39 +130,18 @@ endfunc
 "}}}
 "{{{
 function! AutoLoadCTags() "cscope is loaded by cscope_maps.vim
-    let b:current_directory = getcwd()
-    let b:position_of_divider = 0
-	unlet! b:tags_find
-    while exists("b:current_directory")
-        "search at current directory
-        if isdirectory(b:current_directory)
-            if !exists("b:tags_find") && filereadable(b:current_directory . '/tags')
-                execute 'set tags =' . b:current_directory . '/tags'
-                execute 'lcd ' . b:current_directory
-				echo  'set tags =' . b:current_directory . '/tags'
-                let b:tags_find = 1
-            endif
-            if exists("b:tags_find")
-                break
-            endif
+    " if tag is in current dir, the default value can handle it
+    " the default tags=./tags,./TAGS,tags,TAGS'
+	"
+    " use backward findfile() function to search the tags file
+    if !filereadable("tags")
+        let b:tags_file=findfile("tags", ".;")
+        let b:tags_pre=matchstr(b:tags_file, ".*/")
+        if filereadable(b:tags_pre . 'tags')
+            execute 'set tags =' . b:tags_pre . 'tags'
+            execute 'lcd ' . b:tags_pre
         endif
-
-        " search at subdirectory
-        " use regular-expression to get the position of the last divider('/')
-        if exists("b:position_of_divider")
-            let b:position_of_divider = match(b:current_directory,'/[^/]\{-}$',0)
-            if(b:position_of_divider > 0)
-                let b:current_directory = strpart(b:current_directory,0,b:position_of_divider)
-            else
-                "try find tags at $HOME at last but not root
-                let b:current_directory = $HOME
-				unlet! b:position_of_divider
-            endif
-        else
-			unlet! b:current_directory
-        endif
-
-    endwhile
+    endif
 endf
 "nmap <F7> :call AutoLoadCTags()<CR>
 autocmd FileType h call AutoLoadCTags()
