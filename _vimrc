@@ -140,6 +140,10 @@ let g:tlTokenList = ["FIXME", "TODO", "HACK", "NOTE", "WARN", "MODIFY"]
 let g:bookmark_highlight_lines  = 1 " 高亮显示书签行
 "}}}
 
+"{{{ vim-powerline
+let g:Powerline_colorscheme='solarized256' " 设置状态栏主题风格
+"}}}
+
 "{{{ UltiSnips.vim
 autocmd FileType * call UltiSnips#FileTypeChanged()
 let g:UltiSnipsExpandTrigger="ii"	" 连续按下两次i触发代码补全
