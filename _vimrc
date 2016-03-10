@@ -101,6 +101,11 @@ set incsearch                       " 增量搜索
 
 "{{{ 主题设置
 set t_Co=256                        " 开启256色支持
+"set background=dark
+colorscheme desertEx_256
+"colorscheme solarized
+"colorscheme molokai
+"colorscheme phd
 "}}}
 
 "{{{ 杂项
