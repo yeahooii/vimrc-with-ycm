@@ -11,7 +11,9 @@ function init_vim_file()
 
     ln -s "${CURRENT_PATH}/vim" ~/.vim
     ln -s "${CURRENT_PATH}/_vimrc" ~/.vimrc
+    ln -s "${CURRENT_PATH}/_gvimrc" ~/.gvimrc
     ln -s "${CURRENT_PATH}/_vimrc.local" ~/.vimrc.local
+
 }
 
 function init_linux_font()
