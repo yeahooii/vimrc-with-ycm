@@ -72,7 +72,7 @@ set smarttab                        " 在行和段开始处使用制表符
 set number                          " 显示行号
 
 " 代码折叠
-set foldenable                      " 开启代码折叠
+set nofoldenable                    " 关闭Vim不启动时打开代码折叠功能
 set foldmethod=syntax               " 根据语法折叠代码
 
 " Vim折叠
