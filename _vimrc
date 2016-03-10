@@ -151,18 +151,17 @@ nnoremap    <leader>sv          :source $MYVIMRC<cr>        " 刷新vim配置
 nnoremap    <leader>ev          :vsplit $MYVIMRC<cr>        " 分割窗口打开vim配置
 
 " 编辑相关
-inoremap    jk                  <esc>           " 编辑模式下按jk等价于按ESC键, 非常高效
-nnoremap    Q                   :q<CR>          " 命令模式下，输入Q，退出Vim
-nmap <leader>w :w!<cr>
-nmap <leader>f :find<cr>
+inoremap    kj        <esc>     " 编辑模式下按jk等价于按ESC键, 非常高效
 
 " 复制
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
-vmap <C-c> "+y                  " 选中状态下 Ctrl+c 复制
 
 :set pastetoggle=<F11>          " 粘贴情况下的自动对齐开关
 map <F12> gg=G                  " 全文对齐
+vnoremap <Leader>y "+y          " 将选中文本块复制至系统剪贴板
+vmap <Leader>y "+y              " 选中状态下 Ctrl+c 复制
+nmap <Leader>p "+p              " 将系统剪贴板内容粘贴至 vim
 
 nnoremap <F2> :g/^\s*$/d<CR>    " 去空行
 
@@ -171,23 +170,27 @@ nnoremap <C-F2> :vert diffsplit " 比较文件
 "map <F3> :tabnew .<CR>         " 列出当前目录文件
 "map <C-F3> \be                 " 打开树状文件目录
 "
-" 窗口间移动
-nnoremap    <C-j>               <C-W>j
-nnoremap    <C-k>               <C-W>k
-nnoremap    <C-h>               <C-W>h
-nnoremap    <C-l>               <C-W>l
+" 非插入模式下按Ctrl加上jklh在窗口间移动
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
-" 插入模式下移动光标
-inoremap    <C-y>               <Up>            " 输入模式下，按Ctrl+y移动光标到上一行
-inoremap    <C-e>               <Down>          " 输入模式下，按Ctrl+e移动光标到下一行
-inoremap    <c-h>               <left>
-inoremap    <c-l>               <right>
-inoremap    <c-j>               <c-o>gj
-inoremap    <c-k>               <c-o>gk
+" 插入模式下按Ctrl加上jklh移动光标
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+inoremap <c-j> <c-o>gj
+inoremap <c-k> <c-o>gk
 
 " 绑定快捷键，默认是 <Leader>t
 nnoremap    <leader>td          :TaskList<CR>
 
+"保存和退出
+nmap <Leader>q :q<CR>           " 关闭当前分割窗口
+nmap <Leader>w :w<CR>           " 保存当前窗口内容
+nmap <Leader>WQ :wa<CR>:q<CR>   " 保存所有窗口内容并退出 vim
+nmap <Leader>Q :qa!<CR>         " 不做任何保存,直接退出 vim
+"}}}
 "===============================================================================
 " Source User's Own Setting
 "===============================================================================
