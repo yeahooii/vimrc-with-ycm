@@ -62,6 +62,7 @@ set noexpandtab                     " 默认不要将Tab展开为空格
 "autocmd FileType c set noexpandtab  " c file中需要使用Tab
 "autocmd FileType cpp set noexpandtab " cpp file中需要使用Tab
 autocmd FileType java set expandtab " 在java file中需要使用空格
+autocmd FileType lua set expandtab " 在java file中需要使用空格
 set softtabstop=4                   " 配合tabstop
 set listchars=tab:▸\ ,trail:▫       " 指定Tab和结尾空白字符
 set backspace=eol,start,indent      " 插入模式下使用 <BS>、<Del> <C-W> <C-U>
