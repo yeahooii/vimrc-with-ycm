@@ -116,7 +116,11 @@ set report=0                        " 通过使用: commands命令，告诉我�
 set noerrorbells                    " 错误时不发出声响
 set novisualbell                    " 禁用可视响铃
 set t_vb=                           " 可视响铃
-set mouse=a                         " 所有模式下，开启鼠标支持
+if has("gui_running") && has("unix")" 终端鼠标支持
+    set mouse=a                     " "a" for GUI, MS-DOS and Win32
+else
+    set mouse=v
+endif
 set clipboard+=unnamed              " 共享剪贴板
 "set selection=exclusive            " use default value(inclusive)
 set selectmode=mouse,key
