@@ -1,7 +1,6 @@
 
 "set lines=60 columns=220            " 设置行、列
 "
-colorscheme desertEx_256
 
 "{{{标尺相关
 "set cursorcolumn                    " 高亮显示列
