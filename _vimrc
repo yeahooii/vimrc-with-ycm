@@ -50,7 +50,7 @@ set wrap                            " (当一行长度超过屏幕宽度后)自�
 set linebreak                       " 不在单词中间断行
 set fo+=mB                          " 打开断行模块对亚洲语言支持
 set whichwrap+=<,>,h,l              " 命令模式下可以直接移动到下一行或上一行
-set iskeyword+=_,$,@,%,#,-          " 带有如下符号的单词不要被换行分割
+set iskeyword+=$,%,-                " 带有如下符号的单词不要被换行分割
 set textwidth=0                     " 关闭代码自动折行，插入模式下，默认每80个字开启新行。
 
 " 空白
